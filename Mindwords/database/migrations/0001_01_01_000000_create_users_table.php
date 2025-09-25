@@ -19,6 +19,13 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->string('avatar')->nullable(); // ảnh đại diện
+            $table->enum('role', ['user', 'admin'])->default('user'); // phân quyền
+            $table->text('bio')->nullable(); // mô tả ngắn về bản thân
+            $table->string('learning_goal')->nullable(); // mục tiêu học tập
+            $table->integer('points')->default(0); // điểm thưởng
+            $table->integer('streak_days')->default(0); // số ngày học liên tục
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -46,4 +53,15 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
+    user::create([
+        'name' => 'Hoang Thi Ngoc',
+        'email' => 'hoangthi@example.com',
+        'password' => bcrypt('123456'),
+        'avatar' => null,
+        'role' => 'user',
+        'bio' => 'Hello, I am Hoang Thi Ngoc.',
+        'learning_goal' => 'Learn Laravel',
+        'points' => 0,
+        'streak_days' => 0,
+    ]);
 };
