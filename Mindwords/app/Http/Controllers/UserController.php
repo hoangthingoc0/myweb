@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -11,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return response()->json($users);
     }
 
     /**
@@ -27,7 +29,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'avatar' => $request->input('avatar'),
+            'role' => $request->input('role'),
+            'bio' => $request->input('bio'),
+            'learning_goal' => $request->input('learning_goal'),
+            'points' => $request->input('points'),
+            'streak_days' => $request->input('streak_days'),
+        ]);
+        $user = User::create([
+            ...$validated,
+            'password' => bcrypt($validated['password'])
+        ]);
+
+        return response()->json($User, 201);
     }
 
     /**
@@ -35,23 +53,19 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return response()->json($user);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return response()->json($user);
     }
 
     /**
@@ -59,6 +73,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json(['message' => 'User deleted successfully']);
     }
 }
