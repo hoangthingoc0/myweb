@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -53,15 +53,4 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
-    user::create([
-        'name' => 'Hoang Thi Ngoc',
-        'email' => 'hoangthi@example.com',
-        'password' => bcrypt('123456'),
-        'avatar' => null,
-        'role' => 'user',
-        'bio' => 'Hello, I am Hoang Thi Ngoc.',
-        'learning_goal' => 'Learn Laravel',
-        'points' => 0,
-        'streak_days' => 0,
-    ]);
 };
