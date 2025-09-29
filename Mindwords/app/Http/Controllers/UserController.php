@@ -2,79 +2,104 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // trả về danh sách an toàn (ẩn password, remember_token)
     public function index()
     {
-        $users = User::all();
-        return response()->json($users);
+        return User::query()
+            ->select('id','name','email','avatar','bio','learning_goal','points','streak_days','created_at')
+            ->latest('id')
+            ->paginate(20);
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * POST /api/users
+     * Tạo user mới (đăng ký)
      */
     public function store(Request $request)
     {
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-            'avatar' => $request->input('avatar'),
-            'role' => $request->input('role'),
-            'bio' => $request->input('bio'),
-            'learning_goal' => $request->input('learning_goal'),
-            'points' => $request->input('points'),
-            'streak_days' => $request->input('streak_days'),
-        ]);
-        $user = User::create([
-            ...$validated,
-            'password' => bcrypt($validated['password'])
+        $validated = $request->validate([
+            'name'          => 'required|string|max:100',
+            'email'         => 'required|email|unique:users,email',
+            'password'      => 'required|string|min:6',
+            'avatar'        => 'nullable|string',
+            'bio'           => 'nullable|string',
+            'learning_goal' => 'nullable|string',
         ]);
 
-        return response()->json($User, 201);
+        $user = User::create($validated);
+
+        return response()->json([
+            'id'            => $user->id,
+            'name'          => $user->name,
+            'email'         => $user->email,
+            'avatar'        => $user->avatar,
+            'bio'           => $user->bio,
+            'learning_goal' => $user->learning_goal,
+            'points'        => $user->points,
+            'streak_days'   => $user->streak_days,
+            'created_at'    => $user->created_at,
+        ], 201);
     }
 
     /**
-     * Display the specified resource.
+     * GET /api/users/{id}
+     * Xem 1 user (ẩn trường quan trọng)
      */
     public function show(string $id)
     {
-        $user = User::findOrFail($id);
-        return response()->json($user);
+        $u = User::select('id','name','email','avatar','bio','learning_goal','points','streak_days','created_at')
+            ->findOrFail($id);
+
+        return response()->json($u);
     }
 
-  
     /**
-     * Update the specified resource in storage.
+     * PUT /api/users/{id}
+     * Cập nhật user (chỉ các trường được phép)
      */
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id);
-        $user->update($request->all());
-        return response()->json($user);
+
+        $validated = $request->validate([
+            'name'          => 'sometimes|required|string|max:100',
+            'email'         => ['sometimes','required','email', Rule::unique('users','email')->ignore($user->id)],
+            'avatar'        => 'nullable|string',
+            'bio'           => 'nullable|string',
+            'learning_goal' => 'nullable|string',
+            'password'      => 'nullable|string|min:6', // có thì sẽ auto-hash
+        ]);
+
+        // chỉ update các field được phép; loại bỏ null để tránh overwrite
+        $user->update(array_filter($validated, fn ($v) => $v !== null));
+
+        return response()->json([
+            'id'            => $user->id,
+            'name'          => $user->name,
+            'email'         => $user->email,
+            'avatar'        => $user->avatar,
+            'bio'           => $user->bio,
+            'learning_goal' => $user->learning_goal,
+            'points'        => $user->points,
+            'streak_days'   => $user->streak_days,
+            'updated_at'    => $user->updated_at,
+        ]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * DELETE /api/users/{id}
      */
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);
         $user->delete();
+
         return response()->json(['message' => 'User deleted successfully']);
     }
 }
