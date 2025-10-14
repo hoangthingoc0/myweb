@@ -1,0 +1,121 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Form container */
+form {
+  background: #fff;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+h2 {
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+p {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Label */
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+/* Input + Icon */
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 10px 12px 10px 38px; /* chừa chỗ cho icon */
+  border: 1.8px solid #d1d5db;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.auth-input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* Eye icon (toggle password) */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Fix icon size */
+.input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Login button */
+.login-button {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 0;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.login-button:hover {
+  background: linear-gradient(to right, #1e40af, #1d4ed8);
+  transform: translateY(-1px);
+}
+
+/* Divider line */
+.relative.my-6 {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.relative.my-6 span {
+  background: #fff;
+  padding: 0 10px;
+  color: #6b7280;
+}
+
+/* Text links */
+.auth-link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}

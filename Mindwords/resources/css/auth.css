@@ -1,0 +1,114 @@
+/* Toàn trang */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffe6f2; /* Hồng nhạt nền chính */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form bao quanh */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hộp đăng nhập */
+.login-box {
+    background-color: #c7e9ff; /* Xanh nhạt như hình minh họa */
+    border-radius: 25px;
+    padding: 40px 35px;
+    width: 380px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #003366;
+}
+
+/* Tiêu đề */
+.login-box h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #003366;
+}
+
+.login-box h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #004b7a;
+}
+
+/* Input */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    outline: none;
+    color: #333;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+/* Liên kết và nút */
+.forgot {
+    color: #004b7a;
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #ff70a6, #ffb6c1);
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #ff4d94, #ffa3b1);
+}
+
+/* Link đăng ký */
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #004b7a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
