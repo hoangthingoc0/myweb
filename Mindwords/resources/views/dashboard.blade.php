@@ -1,17 +1,12 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng điều khiển</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 100px;">
+    <h1>Chào mừng {{ Auth::user()->name }}!</h1>
+    <p>Bạn đã đăng ký và đăng nhập thành công 🎉</p>
+    <a href="{{ route('logout') }}">Đăng xuất</a>
+</body>
+</html>

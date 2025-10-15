@@ -15,6 +15,16 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
+                @if ($errors->any())
+                    <div class="error-box">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li style="color:red;">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="input-group">
                     <span class="icon">👤</span>
                     <input type="text" name="name" placeholder="Nhập họ và tên" required>
@@ -26,9 +36,9 @@
                 </div>
 
                 <div class="input-group">
-                    <span class="icon">🔒</span>
+                    <span class="icon">🔑</span>
                     <input type="password" name="password" id="password" placeholder="Nhập mật khẩu" required>
-                    <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                    <span class="toggle-password" onclick="togglePassword()">🙉</span>
                 </div>
 
                 <div class="input-group">
