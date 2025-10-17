@@ -1,0 +1,169 @@
+/* ==== Tổng thể ==== */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #F8FAFC;
+    color: #333;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==== Sidebar ==== */
+.sidebar {
+    width: 240px;
+    background: linear-gradient(180deg, #9AC5D3, #E1D5E7);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 3px 0 12px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 12px;
+    margin: 6px 0;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav a i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==== Nội dung ==== */
+.content {
+    flex: 1;
+    padding: 2rem 3rem;
+}
+
+/* ==== Header ==== */
+.header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #9AC5D3;
+}
+
+.header h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #3a3a3a;
+}
+
+/* ==== Thanh tìm kiếm ==== */
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 66%;
+    background: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 4px 12px rgba(154, 197, 211, 0.2);
+    padding: 10px 16px;
+    transition: all 0.3s ease;
+}
+
+.search-container:hover {
+    box-shadow: 0 6px 18px rgba(154, 197, 211, 0.3);
+}
+
+.search-icon {
+    color: #6A8CAF;
+    font-size: 1.3rem;
+    margin-right: 10px;
+}
+
+.search-bar {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* ==== Nút thêm ==== */
+.add-btn {
+    background: #EFBAD3;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    padding: 10px 12px;
+    cursor: pointer;
+    margin-left: 12px;
+    box-shadow: 0 3px 8px rgba(239, 186, 211, 0.3);
+    transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 12px rgba(239, 186, 211, 0.45);
+}
+
+/* ==== Cards ==== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 2.5rem;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.card h4 {
+    margin-bottom: 10px;
+    color: #6A8CAF;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card p {
+    color: #444;
+    font-size: 0.95rem;
+}

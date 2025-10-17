@@ -1,0 +1,121 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9faff;
+    margin: 0;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    background: #fff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    color: #3b3b98;
+}
+
+.sidebar nav a {
+    display: block;
+    color: #555;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: 0.2s;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+    background-color: #eef1ff;
+    color: #2f3cc9;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+}
+
+.header h1 {
+    font-size: 22px;
+    color: #2f3cc9;
+    margin-bottom: 20px;
+}
+
+.create-flashcard form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: none;
+    background: #f6f7fb;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    resize: none;
+}
+
+.word-pair {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pair-number {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.inputs {
+    display: flex;
+    gap: 15px;
+}
+
+.inputs input {
+    flex: 1;
+    background: #f6f7fb;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+#addCardBtn,
+#createBtn {
+    background: #eef1ff;
+    border: none;
+    color: #2f3cc9;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#addCardBtn:hover,
+#createBtn:hover {
+    background: #2f3cc9;
+    color: #fff;
+}
